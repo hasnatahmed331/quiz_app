@@ -30,25 +30,3 @@
   overflow: hidden;
   background-color: #e8e8e8;
 }
-
-.registration-body{
-  overflow: hidden;
-  background-color: #00476e;
-  color: white;
-}
-
-.registration_form_container{
-    align-items: center;
-    background-color: white;
-    border-radius: 30px;
-    border: 1px solid black;
-    padding: 5px 10px;
-    color: black;
-}
-
-.registration_form input{
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    margin: 5px;
-    padding: 10px 20px;
-}

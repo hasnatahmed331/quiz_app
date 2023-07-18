@@ -47,7 +47,7 @@
     <ol class="pagination align-right mr-auto">
     {% if page_obj.has_next %}
       <li class="page-item">
-        <a id="next-btn" class="page-link btn btn-success" href="?page={{ page_obj.next_page_number }}"  >Next</a>
+        <a id="next-btn" class="page-link btn btn-success" href="?page={{ page_obj.next_page_number }}" onclick="handleNext(event)"  >Next</a>
       </li>
       {% endif %}
         <li class="page-item">

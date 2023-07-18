@@ -20,7 +20,6 @@ if (nextBtn) {
 }
 
 function displayRadioValue() {
-  
   let sessionResults = sessionStorage.getItem("questionResults");
   let questionResults = sessionResults ? JSON.parse(sessionResults) : {};
   let questionID = document.getElementById("questionID").value;
@@ -28,7 +27,6 @@ function displayRadioValue() {
   var ele = document.getElementsByName("option");
   for (i = 0; i < ele.length; i++) {
     if (ele[i].checked) {
-      
       checked_val = ele[i].value;
       
       if (checked_val == answerLabel.value) {
@@ -59,31 +57,9 @@ function displayRadioValue() {
     }
 
   }
-
   sessionStorage.setItem("questionResults", JSON.stringify(questionResults));
   console.log(questionResults); 
 }
-
-function handleNext(event){
-  let questionID = document.getElementById("questionID").value;
-    event.preventDefault();
-    let sessionResults =  sessionStorage.getItem("questionResults");
-    if(sessionResults == null){ 
-      alert("Please first check the answer")
-      return;
-  
-  } 
-  else{
-    let questionResults =  JSON.parse(sessionResults) 
-    try{
-      questionResults[questionID];
-      window.location.href = event.target.href;
-    }
-    catch(err){
-      alert("Please first check the answer")
-      return;
-    }
-}}
 
 
 
@@ -99,7 +75,6 @@ document.getElementById("show-result-btn").addEventListener("click", function() 
 
 // Show the results in Section 2
 function showResults() {
-  let count = 1;
   let sessionResults = sessionStorage.getItem("questionResults");
   let questionResults = sessionResults ? JSON.parse(sessionResults) : {};
 
@@ -123,9 +98,8 @@ function showResults() {
   for (let questionID in questionResults) {
     console.log(questionResults[questionID]);
     let resultText = questionResults[questionID] === true ? "correct" : "incorrect";
-    let resultHTML = `<div class="col-12"><p>${count} is ${resultText}</p></div>`;
+    let resultHTML = `<div class="col-12"><p>${questionID} is ${resultText}</p></div>`;
     resultsContainer.insertAdjacentHTML("beforeend", resultHTML);
-    count++;
   }
 
   let percentageHTML = `<div class="col-12"><p>Percentage: ${percentage}%</p></div>`;
@@ -136,5 +110,4 @@ function showResults() {
   
   // Scroll to Section 2
   document.getElementById("section2").scrollIntoView({ behavior: "smooth" });
-  sessionStorage.removeItem("questionResults");
 }

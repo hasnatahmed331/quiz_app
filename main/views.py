@@ -43,6 +43,7 @@ class RegistrationView(View):
                 user.is_active = True
                 user.save()
                 
+                
                 messages.success(request, 'Account created successfully')
                 return redirect('login')
         return render(request, 'authentication/register.html')
